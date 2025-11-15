@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>360° College Campus View</title>
+  
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
+  
+</head>
+
+<body>
+  <button class="hamburger-menu" onclick="toggleSidebar()">☰</button>
+  <div class="sidebar">
+    <div class="header-branding">
+      <div id="logo"> <img src="images/logo.jfif" alt="DDRC_logo"></div>
+      <h2 id="nav-header">District Disability Rehabilitation Centre (DDRC)</h2>
+      <p id="nav-subheader">360° Virtual Tour</p>
+    </div>
+
+    <div id="language-switcher">
+      <button class="lang-btn" onclick="setLanguage('en')" id="lang-en">English</button>
+      <button class="lang-btn" onclick="setLanguage('mr')" id="lang-mr">मराठी</button>
+    </div>
+    
+    <button onclick="loadView('a1')" id="nav-1">Main Entrance</button>
+    <button onclick="loadView('a28')" id="nav-28">Reception</button>
+    <button onclick="loadView('a6')" id="nav-6">6</button>
+    <button onclick="loadView('a8')" id="nav-8">8</button>
+    <button onclick="loadView('a7')" id="nav-7">7</button>
+    <button onclick="loadView('a30')" id="nav-30">30</button>
+    <button onclick="loadView('a10')" id="nav-10">10</button>
+    <button onclick="loadView('a29')" id="nav-29">29</button>
+    <button onclick="loadView('a13')" id="nav-13">13</button>
+    <button onclick="loadView('a14')" id="nav-14">14</button>
+    <button onclick="loadView('a26')" id="nav-26">26</button>
+    <button onclick="loadView('a27')" id="nav-27">27</button>
+    <button onclick="loadView('a15')" id="nav-15">15</button>
+    <button onclick="loadView('a23')" id="nav-23">23</button>
+    <button onclick="loadView('a22')" id="nav-22">23</button>
+      <button onclick="loadView('a16')" id="nav-16">16</button>
+    <button onclick="loadView('a17')" id="nav-17">17</button>
+     <button onclick="loadView('a31')" id="nav-31">31</button>
+    <button onclick="loadView('a4')" id="nav-4">4</button>
+    <button onclick="loadView('a5')" id="nav-5">5</button>
+
+
+    <button onclick="loadView('a2')" id="nav-2" class="corr">2</button>
+    <button onclick="loadView('a3')" id="nav-3" class="corr">3</button>
+     <button onclick="loadView('a11')" id="nav-11" class="corr">11</button>
+    <button onclick="loadView('a12')" id="nav-12" class="corr">12</button>
+     <button onclick="loadView('a18')" id="nav-18" class="corr">18</button>
+    <button onclick="loadView('a19')" id="nav-19" class="corr">19</button>
+    <button onclick="loadView('a20')" id="nav-20" class="corr">20</button>
+    <button onclick="loadView('a21')" id="nav-21" class="corr">21</button>
+    <button onclick="loadView('a24')" id="nav-24" class="corr">24</button>
+    <button onclick="loadView('a25')" id="nav-25" class="corr">25</button>
+  </div>
+
+  <div class="viewer-container">
+    <div id="viewer"></div>
+    <div class="bottom-bar">
+      <p id="location-text">Main Building Entrance — 360° Interactive View</p>
+      <button onclick="resetView()" title="Reset View">↻</button>
+      <button onclick="toggleFullscreen()" title="Toggle Fullscreen">⛶</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+  
+</body>
+</html>

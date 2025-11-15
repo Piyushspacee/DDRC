@@ -1,0 +1,270 @@
+body {
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  /* Subtle background for main viewer area */
+}
+
+
+/* Sidebar */
+.sidebar {
+  width: 300px;
+  background-color: #ffffff;
+  color: #333;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  /* Enable scrolling if too many items are added */
+}
+#logo img{
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+#logo{
+  display: flex;
+  justify-content: center;
+}
+/* Header Branding (Dark Blue Section) */
+.header-branding {
+  background-color: #006699;
+  color: white;
+  padding: 20px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.header-branding h2 {
+  margin: 0;
+  font-size: 1.2em;
+  text-align: center
+}
+
+.header-branding p {
+  margin-left: 20px;
+  font-size: 0.8em;
+  opacity: 0.8;
+  margin-left: 70px;
+}
+
+/* Language Switcher Styling */
+#language-switcher {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f9fcff;
+  border-bottom: 1px solid #004b99;
+}
+
+.lang-btn {
+  flex-grow: 1;
+  margin: 0 5px;
+  background-color: #ffffff;
+  /* Default button color for lang switch */
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 5px;
+  border-radius: 4px;
+  border: 10px solid #004b99;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9em;
+  transition: background-color 0.2s;
+}
+
+/* Active language button (Set via JavaScript) */
+.lang-btn.active-lang {
+  background-color: #0099ff;
+  color: rgb(255, 255, 255);
+}
+
+
+/* Group Headers (e.g., "Main Administrative Block") */
+.nav-group-header {
+  padding: 10px 20px 5px 20px;
+  font-size: 0.8em;
+  color: #888;
+  text-transform: uppercase;
+  border-bottom: 1px solid #eee;
+}
+
+/* Functional Navigation Buttons Styling */
+.sidebar button {
+  background-color:transparent;
+  border: none;
+  color: #333;
+  padding: 12px 20px;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 1px solid #adabab;
+  font-size: 0.95em;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.sidebar button:hover {
+  background-color: #006699;
+  color: rgb(255, 255, 255);
+}
+
+/* --- ACTIVE/SELECTED ITEM STYLE --- */
+.sidebar button.active-nav {
+  background-color: #006699;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border-bottom: 1px solid #E6F0F8;
+}
+
+
+/* Viewer */
+.viewer-container {
+  flex-grow: 1;
+  position: relative;
+}
+
+#viewer {
+  width: 100%;
+  height: 100%;
+}
+
+.bottom-bar {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+.bottom-bar p {
+  margin: 0;
+}
+
+.bottom-bar button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bottom-bar button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.custom-hotspot-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 20;
+  position: relative;
+ /* overflow: hidden;  */
+}
+
+.custom-hotspot-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('images/next.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(270deg);
+  transform-origin: center;
+}
+
+.custom-hotspot-icon:hover {
+  box-shadow: 0 0 15px rgba(0, 248, 50, 0.8);
+}
+
+
+/* --- MEDIA QUERY: TABLET AND MOBILE (Max Width 768px) --- */
+@media (max-width: 768px) {
+
+  /* 1. Body: Change layout direction to stack elements */
+  body {
+    flex-direction: column;
+    overflow-y: hidden;
+    /* Prevent body scroll, sidebar will handle its own scroll */
+  }
+
+  /* 2. Sidebar: Initial state (Hidden/Off-Screen) */
+  .sidebar {
+    /* Set full width/height for overlay */
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    /* Fix position over the viewer */
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    /* Move sidebar off-screen to the left */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    /* Smooth slide effect */
+    box-shadow: none;
+  }
+
+  /* 3. Sidebar: Active state (Slide In) */
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+    /* Slide sidebar into view */
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.7);
+  }
+
+  /* 4. Viewer: Ta
+  kes full width, pushed down slightly by menu if needed */
+  .viewer-container {
+    width: 100vw;
+    height: 100vh;
+    flex-grow: 1;
+  }
+
+  /* 5. Show the Hamburger Button */
+  .hamburger-menu {
+    display: block;
+  }
+
+  /* 6. Adjust logo/branding for mobile */
+  .header-branding {
+    padding-top: 50px;
+    /* Make space for the hamburger button */
+  }
+}
+/* --- NEW: HAMBURGER BUTTON STYLING --- */
+.hamburger-menu {
+  display: block;
+  /* Hide by default on large screens */
+  position: fixed;
+  top: 10px;
+
+  /* ➡️ CHANGE LEFT TO RIGHT ⬅️ */
+  right: 10px;
+
+  z-index: 1000;
+  /* Ensure it's above everything else */
+  background-color: rgba(0, 102, 153, 0.9);
+  /* Dark blue, semi-transparent */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1.5em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.corr {
+    display: none;
+}
